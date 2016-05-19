@@ -112,5 +112,13 @@ Double = 5.7
 res21._3
 Char = f
 ```
+## Naming Values and Variables
+There are three keywords in Scala that give names to values. The first to are **val and var**
+```
+val age:Int=5
+age: Int =5
 
+var average:Int=(2+3+4+5)/4
+average: Int = 3
+```
 
