@@ -122,3 +122,105 @@ var average:Int=(2+3+4+5)/4
 average: Int = 3
 ```
 
+## Naming Values and a Variables
+There are three keywords in Scala that give names to values. Two of them are **val and var**.
+```
+val age:Int=5
+age: Int = 5
+
+var average:int=(2+3+4+5)/4
+average: Int = 3
+```
+The type is optional, scala is able to figure out the type in most situations.
+```
+val age=5
+age: Int = 5
+
+var average=(2+3+4+5)/4
+average: Int = 3
+```
+The reason for using a **val** or a **var** is that they give a name to the value that we can refer back to later.<br />
+The difference between val and var is not in the syntax but in the meaning or semantics.<br />
+A **val** gives a reference to a vlaue. *That reference can not be changed - It is set forever*<br />
+A **var** allows the reference to change.<br />
+The act of changing the reference stored is reffered to as an an assignment. *This is done with the same **=** sign that is used to set the initial value*<br/>
+In an assignment there are no val or var keywords. If you use one you will be creating a new variable not changing an old one.
+```
+average=8
+average: Int = 8
+
+average=2*average
+average: Int = 16
+```
+*The first assignment sets the average to 3<br/>
+The second uses the previously reffered value and multiplies it by 2 then stores it back to the variable*</br>
+Technically the assignment is able to do something called **PATTERN MATCHING**. We can put tuples on the left-hand side of an equals sign where we would normally put a variable name. 
+```
+val t=(100,5.7)
+t: (Int, Double) = (100,5.7)
+```
+**t** refers to the tuple and has a type (Int, Double). If you want to put multiple names inside of a () on the left of the equals much like a tuple, all the name will be bound.
+```
+val (price, weight)=(100,5.7)
+price: Int = 100
+weight: Double = 5.7
+```
+### Exercise
+Given total time in seconds
+Find what it is in hours, minutes and seconds
+Print out in reasonable format "hh:mm:ss"<br />
+**Seconds to minutes** Divide by 60<br />
+```
+val totalSeconds=123456
+totalSeconds: Int = 123456
+```
+```
+val totalMinutes=totalSeconds/60
+totalMinutes: Int 2057
+```
+Figure out how many seconds we need to display
+```
+val displaySeconds=totalSeconds%60
+displaySeconds: Int = 36
+```
+The modulo gives us the remainder after getting all the full groups of 60.<br />
+Number of hours and minutes to display.
+```
+val displayMinutes=totalMinutes%60
+displayMinutes: Int = 17
+
+val displayHours=totalMinutes/60
+displayHours: Int = 34
+```
+We see 12345 seconds is 34 hours, 17 minutes and 36 seconds.<br/>
+Now we must turn it into "hh:mm:ss"
+```
+val finalString=displatyHours+":"+displayMinutes+":"+displaySeconds
+finalString: String = 34:17:36
+```
+If the number of minutes or seconds is less than 10, only one digit is displayed when we want two. We need to load zeros on numbers that have 1 digit.<br/>
+Step one is to get the number of minutes and seconds as **Strings**
+```
+val min=displayMinutes.toString
+min: String == 17
+
+val sec=displayseconds.toString
+sec: String = 36
+```
+A string has an easy way to tell how many digits/characters are in it. When there is one digit we want to add one, when there is two we want to leave it.<br/>
+We can get there by using the * method on the String and a little math. 
+```
+val finalString=displayHours + ":" + ("0"*(2 - min.length)) + min + ":" + ("0" * (2 - sec.length)) + sec
+finalString: String = 34:17:36
+``` 
+We can force values in to test if it works
+```
+val min = "5"
+min: String = 5
+
+val sec = "2"
+sec: String = 2
+
+val finalString = displayHours + ":" + ("0" * (2 - min.length)) + min + ":" + ("0" * (2 - sec.length)) + sec
+finalString String = 34:05:02
+```
