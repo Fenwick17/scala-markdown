@@ -120,4 +120,17 @@ First
 (all letters)
 (all assignment operators)
 ```
-**&&** and **||** are defined on the Boolean type. The comparison operators are defined on numeric types etc. When you use operator otation with a method, the presedence is determined by the first character in the operator.
+**&&** and **||** are defined on the Boolean type. The comparison operators are defined on numeric types etc. When you use operator notation with a method, the presedence is determined by the first character in the operator.<br />
+Another interesting point is that if expressions can be nested inside of one another. 
+```
+val cost = if(ages < 13) 20 else if (age > 65) 20 else 35
+```
+The contents of the else on the first if is itself an if. This is a general property of most programming languages. The if in scala needs some form of expression inside of it for the **true** and **false** possibilities.f it is an expression  in scala. The *if* itself makes a perfectly valid expression to nest. So you can nest ifs inside of one another as much as it makes sense for the problem you are solving.<br />
+Lets go back to the theme park and consider concessions. The menu is not borad and is standard for fast food. Drinks, fries, and other main course items. You can get combos (one of each) and you can specify a size.
+```
+ConcessionsMenu.scala
+```
+This has a top level set of ifs that pick the item type. Inside of each is an if stataement that pics from the different sizes. It will default to a combo if the item is not recognized and to a large if the size is not recognized. **THere are better ways to do this, but this will work for now**.<br/>
+This method demonstrates a standard formatting style used with this type of structure where the only thing in the **else** is another **if**.
+
+### Bit-wise Arithmetic
